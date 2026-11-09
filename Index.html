@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Qui commence ?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <h1>Qui commence<span> ?</span></h1>
+        <div class="tabs" role="tablist" aria-label="Mode de tirage">
+          <button
+            class="tab"
+            role="tab"
+            id="tab-fingers"
+            data-tab="fingers"
+            aria-selected="true"
+            aria-controls="view-fingers"
+          >
+            Doigts
+          </button>
+          <button
+            class="tab"
+            role="tab"
+            id="tab-names"
+            data-tab="names"
+            aria-selected="false"
+            aria-controls="view-names"
+          >
+            Prénoms
+          </button>
+        </div>
+      </div>
+
+      <section id="view-fingers" role="tabpanel" aria-labelledby="tab-fingers">
+        <div class="arena" id="arena">
+          <div class="flood" id="flood"></div>
+          <div class="ghosts" aria-hidden="true">
+            <div class="ghost"></div>
+            <div class="ghost"></div>
+            <div class="ghost"></div>
+          </div>
+          <div class="hud" aria-live="polite">
+            <div class="hud-title" id="hud-title">
+              Posez chacun un doigt sur l'écran
+            </div>
+            <div class="hud-count" id="hud-count"></div>
+          </div>
+          <button class="replay" id="replay" hidden>Rejouer</button>
+        </div>
+        <p class="note" style="margin-top: 12px">
+          Sur téléphone ou tablette, chaque personne pose un doigt et le garde
+          posé. Sur ordinateur, un clic pose un point et un second clic dessus
+          l'enlève. Au bout de 3 secondes sans changement, une personne est
+          tirée au hasard.
+        </p>
+      </section>
+
+      <section
+        id="view-names"
+        role="tabpanel"
+        aria-labelledby="tab-names"
+        hidden
+      >
+        <div class="panels">
+          <div class="panel">
+            <h2>
+              Les participants <span class="count" id="people-count"></span>
+            </h2>
+            <form class="add" id="add-form" autocomplete="off">
+              <input
+                id="new-name"
+                type="text"
+                maxlength="24"
+                placeholder="Ajouter un prénom"
+                aria-label="Prénom à ajouter"
+              />
+              <button type="submit">Ajouter</button>
+            </form>
+            <p class="msg" id="msg" aria-live="polite"></p>
+            <ul class="people" id="people"></ul>
+            <p class="note" id="sample-note" hidden>
+              Ces prénoms sont des exemples. Retirez-les avec la croix et
+              ajoutez les vôtres.
+            </p>
+            <button class="linkbtn" id="clear" type="button">
+              Vider la liste
+            </button>
+          </div>
+
+          <div class="panel">
+            <h2>Le tirage</h2>
+            <div class="result" id="result" aria-live="polite">
+              <div class="who" id="who">?</div>
+              <div class="sub" id="sub">
+                Appuyez sur le bouton pour tirer un prénom
+              </div>
+            </div>
+            <button class="go" id="go" type="button">Tirer au sort</button>
+            <label class="once" for="once">
+              <input type="checkbox" id="once" />
+              <span
+                >Chacun passe une fois avant que le tour recommence. Décoché,
+                tout le monde a les mêmes chances à chaque tirage.</span
+              >
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
